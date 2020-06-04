@@ -1,0 +1,20 @@
+{
+    "name": "kiddchan/todolist-orm",
+    "authors": [
+        {
+            "name": "K88",
+            "email": "kiddchantw@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^7.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "controllerK\\": "src/",
+            "viewK\\":"templates/",
+            "modelK\\":"config/"
+        }
+    }
+
+}

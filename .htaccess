@@ -1,0 +1,15 @@
+RewriteEngine on
+
+# remove .php ok
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# test ok
+RewriteRule ^index$ index.php [L,QSA]
+RewriteRule ^c/getalltags$ controller/getalltags.php
+
+
+
+# if no file redirect to index  
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(.*)$ index.php
