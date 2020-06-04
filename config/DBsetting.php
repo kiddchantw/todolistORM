@@ -5,11 +5,12 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 class DBsetting
 {
-	
+
 	function __construct()
 	{
 		$capsule = new Capsule;
-		$arrayCondition = [
+
+	$arrayCondition = [
 			'driver'    => 'mysql',
     'host'      => '127.0.0.1',   // //localhost
     'database'  => 'dbtest001',

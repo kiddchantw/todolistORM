@@ -5,15 +5,12 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Eloquent\Model  as Eloquent; 
 
 use viewK\Users;
+use viewK\Tasks ;
 use modelK\DBsetting;
+
 session_start();
-
 $connectDB = new DBsetting();
-
 // echo "<h1>todolist ORM test</h1>";
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,18 +37,20 @@ $connectDB = new DBsetting();
 		</form>
 		<label for="text"> user : <?php 
 		$userNow = $_SESSION['username'];
+		$userId = $_SESSION['userId'] ;
 		if (empty($userNow)){
 			echo " now one "; 
 		}else{
 			echo $userNow;
 		}
+		echo "<br> $userId";
 		?> </label>
 		<br>    
 	</div>
 
 	<div class="container-fluid" style="background-color:#FFF8D7;">
 		<h2>About task </h2>
-		<form class="form-inline" action="controller.php" method = "post">
+		<form class="form-inline" action="src/addtask.php" method = "post">
 			<input type="text"  name = "input_task">
 			<input type="submit" name="task_add" value=" add "/>
 		</form>
@@ -66,6 +65,21 @@ $connectDB = new DBsetting();
 				</tr>
 			</thead>
 			<tbody>
+				<?php
+					//var_dump($taskShow);
+				$userId2 = $_SESSION['userId'];
+				$taskShow = Tasks::where('user_id','=',$userId2)->get();
+
+				foreach ($taskShow as $flight) {
+					echo "<tr>";
+					echo "<td> $flight->id </td>";
+					echo "<td> $flight->content </td>";
+					echo "<td> $flight->creat_at </td>";
+					echo "<td></td>";
+					echo "<td></td>";
+					echo "</tr>";
+				}
+				?>
 			</tbody>
 		</table>
 	</div>
